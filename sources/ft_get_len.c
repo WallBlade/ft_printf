@@ -1,35 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_get_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 16:23:55 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/17 21:21:59 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/05/18 11:10:22 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/05/18 15:10:17 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../ft_printf.h"
 
-size_t	ft_putnbr_fd(int n, int fd)
+size_t     ft_numlen(long nb)
+{
+	long    size;
+
+	size = 0;
+	if (nb == 0)
+		size++;
+	if (nb < 0)
+	{
+		nb *= -1;
+		size++;
+	}
+	while (nb > 0)
+	{
+		nb /= 10;
+		size++;
+	}
+	return (size);
+}
+
+size_t		ft_hexa_len(unsigned long long int n)
 {
 	size_t	len;
-	unsigned int n_cpy;
 
-	n_cpy = n;
-	len = ft_numlen(n_cpy);
-	if (n < 0)
+	len = (n == 0);
+	while (n)
 	{
-		n *= -1;
-		write(fd, "-", 1);
+		n /= 16;
+		len ++;
 	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
-	else
-		ft_putchar_fd(n + 48, fd);
 	return (len);
+}
+
+size_t  ft_strlen(const char *s)
+{
+	unsigned int    i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:03:39 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/17 21:10:26 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:37:42 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,20 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+size_t	ft_s(const char *str);
+size_t	ft_x(unsigned int n, char c);
+size_t	ft_d(long n);
+size_t	ft_p(unsigned long long int n);
+size_t	ft_u(unsigned int n);
+
 int		ft_printf(const char *str, ...);
-size_t	ft_putchar_fd(char c, int fd);
-size_t	ft_putnbr_fd(int n, int fd);
-size_t	ft_putstr_fd(const char *s, int fd);
-size_t	ft_put_hexa(unsigned int i, unsigned char c);
-size_t	ft_unputnbr_fd(unsigned int n, int fd);
-size_t	ft_print_addr(unsigned long long int n);
+size_t	ft_putchar(char c);
+void    ft_putnbr(int nb);
+void	ft_putunbr(unsigned int n);
+void	ft_print_x(unsigned long long int n);
+void	ft_print_X(unsigned long long int n);
 size_t	ft_numlen(long nb);
+size_t	ft_hexa_len(unsigned long long int n);
+size_t  ft_strlen(const char *s);
 
 #endif

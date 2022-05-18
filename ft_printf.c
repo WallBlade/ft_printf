@@ -6,35 +6,29 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:01:51 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/17 21:51:19 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:41:59 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_print_args(const char c, va_list args)
 {
-	size_t	len;
-
-	len = 0;
 	if (c == 'c')
-		len += ft_putchar_fd(va_arg(args, int), 1);
+		return (ft_putchar(va_arg(args, int)));
 	else if (c == 'd' || c == 'i')
-		len += ft_putnbr_fd(va_arg(args, int), 1);
+		return (ft_d(va_arg(args, int)));
 	else if (c == 's')
-		len += ft_putstr_fd(va_arg(args, char *), 1);
+		return (ft_s(va_arg(args, char *)));
 	else if (c == 'x' || c == 'X')
-		len += ft_put_hexa(va_arg(args, unsigned int), c);
+		return (ft_x(va_arg(args, unsigned long long int), c));
 	else if (c == 'p')
-	{
-		write(1, "0x", 2);
-		len += ft_print_addr(va_arg(args, unsigned long long int));
-	}
+		return (ft_p(va_arg(args, unsigned long long int)));
 	else if (c == 'u')
-		len += ft_unputnbr_fd(va_arg(args, int), 1);
+		return (ft_u(va_arg(args, int)));
 	else if(c == '%')
-		len += ft_putchar_fd('%', 1);
-	return (len);
+		return (ft_putchar('%'));
+	return (0);
 }
 
 int		ft_printf(const char *str, ...)
@@ -42,9 +36,9 @@ int		ft_printf(const char *str, ...)
 	int		i;
 	int		len;
 	va_list args;
-
-	len = 0;
+	
 	i = 0;
+	len = 0;
 	va_start(args, str);
 	while (str[i] != '\0')
 	{
@@ -55,7 +49,7 @@ int		ft_printf(const char *str, ...)
 		}
 		else
 		{
-			ft_putchar_fd(str[i], 1);
+			ft_putchar(str[i]);
 			len++;
 		}
 		i++;
@@ -64,16 +58,16 @@ int		ft_printf(const char *str, ...)
 	return (len);
 }
 
-int main()
-{
-    // char *manger = "Hello";
-    // char *test = "four";
-    // unsigned int nonsigne = 67;
+// int main()
+// {
+//     char *manger = "Hello";
+//     char *test = "four";
+//     unsigned int nonsigne = 67;
 
-    int resiii = printf("x = %x\n", 321668655);
-    int res = ft_printf("x = %x\n", 321668655);
+//     int resiii = printf("x = %x\n, s = %s\n", 321668655, "dksihsvkj");
+//     int res = ft_printf("x = %x\n", 321668655);
 
-    printf("Orignal : %d, ft_printf : %d", resiii, res);
+//     printf("Orignal : %d, ft_printf : %d", resiii, res);
 
-    return (0);
-}
+//     return (0);
+// }
