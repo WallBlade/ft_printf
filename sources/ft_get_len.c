@@ -6,15 +6,15 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 11:10:22 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/18 15:10:17 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:06:34 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
-size_t     ft_numlen(long nb)
+size_t	ft_numlen(long nb)
 {
-	long    size;
+	long	size;
 
 	size = 0;
 	if (nb == 0)
@@ -32,7 +32,7 @@ size_t     ft_numlen(long nb)
 	return (size);
 }
 
-size_t		ft_hexa_len(unsigned long long int n)
+size_t	ft_hexa_len(unsigned long long int n)
 {
 	size_t	len;
 
@@ -45,9 +45,9 @@ size_t		ft_hexa_len(unsigned long long int n)
 	return (len);
 }
 
-size_t  ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	unsigned int    i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])

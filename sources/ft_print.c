@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 size_t	ft_s(const char *str)
 {
@@ -33,9 +33,9 @@ size_t	ft_s(const char *str)
 size_t	ft_x(unsigned int n, char c)
 {
 	if (c == 'x')
-		ft_print_x(n);
+		ft_print_lower_x(n);
 	else if (c == 'X')
-		ft_print_X(n);
+		ft_print_upper_x(n);
 	return (ft_hexa_len(n));
 }
 
@@ -53,7 +53,7 @@ size_t	ft_p(unsigned long long int n)
 		return (5);
 	}
 	write(1, "0x", 2);
-	ft_print_x(n);
+	ft_print_lower_x(n);
 	return (ft_hexa_len(n) + 2);
 }
 

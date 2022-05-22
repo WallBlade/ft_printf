@@ -1,4 +1,4 @@
-SRC		=	ft_printf.c sources/ft_get_len.c sources/ft_print.c sources/ft_tools.c
+SRC		=	sources/ft_printf.c sources/ft_get_len.c sources/ft_print.c sources/ft_tools.c
 
 OBJ		=	$(SRC:.c=.o)
 

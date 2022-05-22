@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:01:51 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/18 16:41:59 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:06:24 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 size_t	ft_print_args(const char c, va_list args)
 {
@@ -26,17 +26,17 @@ size_t	ft_print_args(const char c, va_list args)
 		return (ft_p(va_arg(args, unsigned long long int)));
 	else if (c == 'u')
 		return (ft_u(va_arg(args, int)));
-	else if(c == '%')
+	else if (c == '%')
 		return (ft_putchar('%'));
 	return (0);
 }
 
-int		ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	int		i;
 	int		len;
-	va_list args;
-	
+	va_list	args;
+
 	i = 0;
 	len = 0;
 	va_start(args, str);
@@ -48,26 +48,9 @@ int		ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-		{
-			ft_putchar(str[i]);
-			len++;
-		}
+			len += ft_putchar(str[i]);
 		i++;
 	}
 	va_end(args);
 	return (len);
 }
-
-// int main()
-// {
-//     char *manger = "Hello";
-//     char *test = "four";
-//     unsigned int nonsigne = 67;
-
-//     int resiii = printf("x = %x\n, s = %s\n", 321668655, "dksihsvkj");
-//     int res = ft_printf("x = %x\n", 321668655);
-
-//     printf("Orignal : %d, ft_printf : %d", resiii, res);
-
-//     return (0);
-// }

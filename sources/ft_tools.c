@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 10:48:27 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/05/18 16:22:50 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:06:39 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 size_t	ft_putchar(char c)
 {
@@ -50,28 +50,22 @@ void	ft_putunbr(unsigned int n)
 		ft_putchar(n + 48);
 }
 
-void	ft_print_x(unsigned long long int n)
+void	ft_print_lower_x(unsigned long long int n)
 {
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
-	while (n >= 16)
-	{
-		ft_print_x(n / 16);
-		n = n % 16;
-	}
-	ft_putchar(hexa[n]);
+	if (n >= 16)
+		ft_print_lower_x(n / 16);
+	ft_putchar(hexa[n % 16]);
 }
 
-void	ft_print_X(unsigned long long int n)
+void	ft_print_upper_x(unsigned long long int n)
 {
 	char	*hexa;
 
 	hexa = "0123456789ABCDEF";
-	while (n >= 16)
-	{
-		ft_print_X(n / 16);
-		n = n % 16;
-	}
-	ft_putchar(hexa[n]);
+	if (n >= 16)
+		ft_print_upper_x(n / 16);
+	ft_putchar(hexa[n % 16]);
 }
